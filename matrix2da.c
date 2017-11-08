@@ -6,7 +6,7 @@
 void inpVector(int **arr, int n, int m); // Функция ввода элементов в вектор-матрицу из файла
 void outVector(int **arr, int n, int m); // Функция вывода элементов вектора-матрицы
 int findMaxCol(int **arr, int n, int m); // Функция поиска столбца с максимальной суммой положительных элементов
-void printRes(int **arr, int n, int m, int jmax); // Функция вывода результатов работы
+void printRes(int **arr, int n, int jmax); // Функция вывода результатов работы
 
 int main() 
 {
@@ -37,7 +37,7 @@ int main()
 	outVector(matrica, N, M);
 
 	// Вывод результатов поиска столбца с максимальной суммой положительных элементов
-	printRes(matrica, N, M, findMaxCol(matrica, N, M));
+	printRes(matrica, N, findMaxCol(matrica, N, M));
 
 	// Освобождение динамической памяти
 	for (i = 0; i < N; i++)
@@ -116,7 +116,7 @@ int findMaxCol(int **arr, int n, int m)
 }
 
 // Функция вывода результатов работы
-void printRes(int **arr, int n, int m, int jmax)
+void printRes(int **arr, int n, int jmax)
 {
 	int i;
 	if (jmax < 0)
