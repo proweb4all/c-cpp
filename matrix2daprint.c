@@ -6,7 +6,7 @@
 void inpVector(int **arr, int n, int m); 
 void outVector(int **arr, int n, int m); 
 int findMaxCol(int **arr, int n, int m); 
-void printRes(int **arr, int n, int m, int jmax); 
+void printRes(int **arr, int n, int jmax); 
 
 int main() 
 {
@@ -31,7 +31,7 @@ int main()
 	inpVector(matrica, N, M);
 	printf("Матрица %dx%d:\n", N, M);
 	outVector(matrica, N, M);
-	printRes(matrica, N, M, findMaxCol(matrica, N, M));
+	printRes(matrica, N, findMaxCol(matrica, N, M));
 	for (i = 0; i < N; i++)
 	{
 		free(matrica[i]);
@@ -99,7 +99,7 @@ int findMaxCol(int **arr, int n, int m)
 	printf("\n------------------------------------------------------------------------------");
 	return jmax;
 }
-void printRes(int **arr, int n, int m, int jmax)
+void printRes(int **arr, int n, int jmax)
 {
 	int i;
 	if (jmax < 0)
