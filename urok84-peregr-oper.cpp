@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-// Перегрузка оператора =
+// Перегрузка оператора == и !=
 
 using namespace std;
 
@@ -74,13 +74,67 @@ class Arr
 		int *data;
 };
 
+class Point
+{
+	public:
+		Point (){
+		}
+		Point (const int valueX, const int valueY, const int valueZ){
+			x = valueX;
+			y = valueY;
+			z = valueZ;
+		}
+		int GetX(){
+			return x;
+		}
+		int GetY(){
+			return y;
+		}
+		int GetZ(){
+			return z;
+		}
+		void SetX(int valueX){
+			x = valueX;
+		}
+		void SetY(int valueY){
+			y = valueY;
+		}
+		void SetZ(int valueZ){
+			z = valueZ;
+		}
+		void printP(){
+			cout << "x=" << x << ", y=" << y << ", z=" << z << "\n";
+		}
+		bool operator == (const Point & valP){
+			return (this->x==valP.x && this->y==valP.y && this->z==valP.z);
+		}
+		bool operator != (const Point & valP){
+			return (this->x!=valP.x || this->y!=valP.y || this->z!=valP.z);
+		}
+	private:
+		int x = 0;
+		int y = 0;
+		int z = 0;
+	//protected:
+};
+
 int main()
 {	
 	setlocale(LC_ALL, "Rus");
-	//system("color C3");
-	Arr A;
-	Arr B(8);
-	Arr C(B);
-	C = B = A;
+//	Arr A;
+//	Arr B(8);
+//	Arr C(B);
+//	C = B = A;
+
+	Point A;
+	A.printP();
+	Point B(5,5,5);
+	B.printP();
+	Point C;
+	C.printP();
+	cout << "(A == B): " << (A == B) << endl;
+	cout << "(A != B): " << (A != B) << endl;
+	cout << "(A == C): " << (A == C) << endl;
+
 	system("pause");
 }
