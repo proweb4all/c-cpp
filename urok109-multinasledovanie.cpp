@@ -9,6 +9,14 @@ using namespace std;
 class Car
 {
 	public:
+		Car()	
+		{
+			cout << "Конструктор Car" << endl;
+		}
+		~Car()	
+		{
+			cout << "Деструктор Car" << endl;
+		}
 		string str1 = "Автомобиль";
 		void drive()
 		{	
@@ -19,6 +27,14 @@ class Car
 class Airplane
 {
 	public:
+		Airplane()	
+		{
+			cout << "Конструктор Airplane" << endl;
+		}
+		~Airplane()	
+		{
+			cout << "Деструктор Airplane" << endl;
+		}
 		string str2 = "Самолет";
 		void fly()
 		{
@@ -29,6 +45,14 @@ class Airplane
 class FlyCar : public Car, public Airplane
 {
 	public:
+		FlyCar()	
+		{
+			cout << "Конструктор FlyCar" << endl;
+		}
+		~FlyCar()	
+		{
+			cout << "Деструктор FlyCar" << endl;
+		}
 		
 };
 
@@ -46,13 +70,13 @@ int main()
 	cout << fc.str2 << ": ";
 	fc.fly();
 
-	Car *ptrc = &fc;
-	Airplane *ptra = &fc;
+//	Car *ptrc = &fc;
+//	Airplane *ptra = &fc;
 	
-	cout << ptrc->str1 << ": ";
-	ptrc->drive();
-	cout << ptra->str2 << ": ";
-	ptra->fly();
+//	cout << ptrc->str1 << ": ";
+//	ptrc->drive();
+//	cout << ptra->str2 << ": ";
+//	ptra->fly();
 	
 	
 
