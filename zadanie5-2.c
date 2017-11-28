@@ -3,12 +3,13 @@
 #include <locale.h>
 #include <stdlib.h> 
 #include <string.h> 
+#include <windows.h>
 
 int main() 
 {
-	setlocale(LC_ALL, "Rus");
-	system("chcp 1251");
-	system("cls");
+	setlocale(LC_ALL, "Rus"); 
+	SetConsoleOutputCP(1251); // Включить, если вывод символов в консоли не по-русски
+    SetConsoleCP(1251); // Включить, если ввод символов в консоли не по-русски
 	char s[80]; // Исходная строка
 	char *slovo; // Текущее слово
 	char c; // Начальный символ
@@ -17,9 +18,7 @@ int main()
 	gets(s);
   	printf("Введите начальный символ искомых слов:\n");
   	c = getchar();
-  	int i, count = 0;
   	printf("Слова в исходной строке, начинающиеся на символ \'%c\':", c);
-
     slovo = strtok(s, razd);
     while(slovo){
         if (slovo[0] == c)
@@ -32,5 +31,3 @@ int main()
 	system("pause");
   	return 0;	
 }
-
-
