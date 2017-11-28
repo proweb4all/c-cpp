@@ -3,12 +3,13 @@
 #include <locale.h>
 #include <stdlib.h> 
 
+void poisk(int *arr, int m, int *ires, int *nres);
+
 int main() 
 {
 	setlocale(LC_ALL, "Rus");
 	int *massiv, i, k, m;
 	int ires=0, nres=1; // Начало и длина результата
-	int itek=0, ntek=1; // Начало и длина текущего отрезка
 	FILE *f;
 	k = 1;
 	while (k)
@@ -22,7 +23,7 @@ int main()
 		} 
 	}
 	massiv=(int*)malloc(m*sizeof(int));
-	if((f=fopen("input.txt", "r"))==0)
+	if((f=fopen("faip.txt", "r"))==0)
 	{
 		printf("Файл не открыт!\n"); 
 		exit(1);
@@ -33,22 +34,10 @@ int main()
 		fscanf(f, "%d ", &massiv[i]);
 		printf("%d ", massiv[i]);
 	}
-	for(i=1; i<m; i++)
-	{
-		if ((massiv[i]<0 && massiv[i-1]>=0) || (massiv[i]>=0 && massiv[i-1]<0))
-		{
-			itek=i;
-			ntek=1;
-		} else
-		{
-			ntek++;
-		}
-		if (nres<ntek)
-		{
-			nres=ntek;
-			ires=itek;
-		}
-	}
+	fclose(f);
+
+	poisk(massiv, m, &ires, &nres); // Функция поиска фрагмента
+
 	printf("\nРезультат:\n");
 	for (i=ires; i<(ires+nres); i++)
 	{
@@ -57,4 +46,26 @@ int main()
 	free(massiv);
 	getch();
 	return 0;
+}
+
+void poisk(int *arr, int m, int *ires, int *nres)
+{
+	int i; 
+	int itek=0, ntek=1; // Начало и длина текущего отрезка
+	for(i=1; i<m; i++)
+	{
+		if ((arr[i]<0 && arr[i-1]>=0) || (arr[i]>=0 && arr[i-1]<0))
+		{
+			itek=i;
+			ntek=1;
+		} else
+		{
+			ntek++;
+		}
+		if (*nres<ntek)
+		{
+			*nres=ntek;
+			*ires=itek;
+		}
+	}
 }
